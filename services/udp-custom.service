@@ -1,0 +1,13 @@
+[Unit]
+Description=UDP Custom
+
+[Service]
+User=root
+Type=simple
+ExecStart=/etc/udp-custom/udp-custom server
+WorkingDirectory=/etc/udp-custom/
+Restart=always
+RestartSec=2s
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Optional: extract ports from /root/log-install.txt (commented out)
+# portdb=$(grep -w "Dropbear" /root/log-install.txt | cut -d: -f2 | sed 's/ //g' | cut -f2 -d",")
+# portdb2=$(grep -w "Dropbear" /root/log-install.txt | cut -d: -f2 | sed 's/ //g' | cut -f1 -d",")
+# portsshws=$(grep -w "SSH Websocket" /root/log-install.txt | cut -d: -f2 | awk '{print $1}')
+# wsssl=$(grep -w "SSH SSL Websocket" /root/log-install.txt | cut -d: -f2 | awk '{print $1}')
+
+# Start proxy3.js with different port combinations using unique session names
+tmux new-session -d -s sshws143_80 "node /usr/bin/proxy3.js -dport 143 -mport 80 -o /root/sshws_143_80.log"
+tmux new-session -d -s sshws143_443 "node /usr/bin/proxy3.js -dport 143 -mport 443 -o /root/sshws_143_443.log"
+tmux new-session -d -s sshwsssl143 "node /usr/bin/proxy3.js -dport 143 -mport 700"
+
+tmux new-session -d -s sshws109_80 "node /usr/bin/proxy3.js -dport 109 -mport 80 -o /root/sshws_109_80.log"
+tmux new-session -d -s sshws109_443 "node /usr/bin/proxy3.js -dport 109 -mport 443 -o /root/sshws_109_443.log"
+tmux new-session -d -s sshwsssl109 "node /usr/bin/proxy3.js -dport 109 -mport 700"

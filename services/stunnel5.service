@@ -1,0 +1,11 @@
+[Unit]
+Description=Stunnel5 Service
+Documentation=https://stunnel.org
+After=syslog.target network-online.target
+[Service]
+ExecStart=/usr/local/bin/stunnel5 /etc/stunnel/stunnel.conf
+Type=forking
+Restart=always
+RestartSec=3
+[Install]
+WantedBy=multi-user.target
