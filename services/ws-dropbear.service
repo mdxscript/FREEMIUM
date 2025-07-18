@@ -1,16 +1,15 @@
 [Unit]
-Description=Websocket-Dropbear
-Documentation=Websocket-Dropbear
-After=network.target nss-lookup.target
+Description=WebSocket Dropbear
+After=network.target
 
 [Service]
-Type=simple
+ExecStart=/usr/local/bin/ws-dropbear 2095
+Restart=always
+RestartSec=3
 User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-NoNewPrivileges=true
-ExecStart=/usr/bin/python -O /usr/local/bin/ws-dropbear 2095
-Restart=on-failure
+WorkingDirectory=/root
+StandardOutput=journal
+StandardError=journal
 
 [Install]
 WantedBy=multi-user.target
