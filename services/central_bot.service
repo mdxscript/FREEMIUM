@@ -1,0 +1,12 @@
+[Unit]
+Description=Central Telegram Bot
+After=network.target
+
+[Service]
+WorkingDirectory=/opt/central_bot
+ExecStart=/opt/central_bot/central_bot
+User=root
+Environment="PYTHONUNBUFFERED=1"
+
+[Install]
+WantedBy=multi-user.target
